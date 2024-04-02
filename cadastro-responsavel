@@ -1,0 +1,41 @@
+/*Adicionando cadastro de novo responsável
+Não acho que está 100% funcional, não consegui testar aqui no trampo
+Conversar sobre na faculdade*/
+/*Criando função de cadastrar novo responsável */
+
+using System;
+using System.Collections.Generic;
+
+public class Responsavel
+{
+    public string Nome { get; set; }
+    public string Email { get; set; }
+
+
+
+public Responsavel(string nome, string email)
+{
+    Nome = nome;
+    email = email;
+}
+
+}
+
+public class Program
+{
+    static List<Responsavel> Responsavels = new List<Responsavel>();
+
+    static void Main(string[] args)
+    {
+        CadastrarResponsavel("Maycon", "maycon@email.com");
+    }
+
+    static void CadastrarResponsavel(string nome, string email)
+    {
+        Responsavel novoResponsavel = new Responsavel(nome, email);
+
+        responsaveis.Add(novoResponsavel);
+
+        Console.WriteLine("Novo responsável cadastrado com sucesso!");
+    }
+}
