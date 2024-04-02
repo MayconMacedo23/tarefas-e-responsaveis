@@ -1,0 +1,63 @@
+/*Cadastrando tarefas para responsáveis*/
+
+using System;
+using System.Collections.Generic;
+
+public class Responsavel
+{
+    public string Nome {get; set;}
+    public string Email {get; set;}
+
+
+    public Responsavel(string nome, string email)
+    {
+        Nome = nome;
+        Email = email;
+    }
+}
+
+public class Tarefa
+{
+    public string Descricao { get; set; }
+    public DateTime DataDeInicio { get; set; }
+    public DateTime DataDeFim { get; set; }
+    public Responsavel Responsavel { get; set; }
+
+
+    public Tarefa(string descricao, DateTime dataDeInicio, DateTime dataDeFim, Responsavel)
+    {
+        Descricao = descricao;
+        DataDeInicio = dataDeInicio;
+        DataDeFim = dataDeFim;
+        Responsavel = Responsavel;
+    }
+}
+
+
+public class Program
+{
+    static List<Responsavel> responsaveis = new List<Responsavel>();
+    static List<Tarefa> tarefas = new List<Tarefa>();
+
+    static void Main(string[] args)
+    {
+        Responsavel novoResponsavel = new Responsavel("Maycon", "Maycon@email;com");
+        responsaveis.Add(novoResponsavel);
+
+        /*cadastro de modelo da tarefa, da pra trocar a qntd de dias ali*/
+        CadastrarTarefa("Fazer relatório", DateTime.Now, DateTime.Now.AddDays(7), novoResponsavel);
+    }
+
+    static void CadastrarTarefa(string descricao, DateTime dataDeInicio, DateTime dataDeFim, Responsavel responsavel)
+    {
+        /*cria nova tarefa*/
+        Tarefa novaTarefa = new Tarefa(descricao, dataDeInicio, dataDeFim, responsavel);
+
+
+        /*adicionar a lista de tarefas*/
+        tarefas.Add(novaTarefa);
+
+        Console.WriteLine("Nova tarefa cadastrada com sucesso");
+    }
+
+}
