@@ -1,0 +1,74 @@
+/*Criando sistema de Exclusão de tarefas
+Não sei se funfa não kkkkkkkkk*/
+
+using System;
+using System.Collections.Generic;
+
+publicc class Responsavel
+{
+    public string Nome { get; set; }
+    public string Email { get; set; }
+
+    public Responsavel(string nome, string email)
+    {
+        Nome = nome;
+        Email = email;
+    }
+}
+
+
+public class Tarefa
+{
+    public string Descricao { get; set; }
+    public DateTime DataDeInicio { get; set; }
+    public DateTime DataDeFim { get; set; }
+    public Responsavel Responsavel { get; set; }
+
+
+    public Tarefa(string descricao, DateTime dataDeInicio, DateTime dataDeFim, Responsavel Responsavel)
+    {
+        Descricao = descricao;
+        DataDeInicio = dataDeInicio;
+        DataDeFim = dataDeFim;
+        Responsavel = Responsavel;
+    }
+}
+
+public class Program
+{
+    static List<Responsavel> responsaveis = new List<Responsavel>();
+    static List<Tarefa> tarefas = new List<Tarefa>();
+
+    static void Main(string[] args)
+    {
+        Responsavel novoResponsavel = new Responsavel("Maycon", "Maycon@email.com");
+        responsaveis.Add(novoResponsavel );
+
+        Tarefa tarefa = new Tarefa("Fazer relatório", DateTime.Now, DateTime.Now.AddDays(7), novoResponsavel);
+        CadastrarTarefa(tarefa);
+
+
+        ExcluirTarefa(tarefa);
+    }
+
+    static void CadastrarTarefa(Tarefa tarefa)
+    {
+        tarefas.Add(tarefa);
+
+        Console.WriteLine("Nova tarefa cadastrada com sucesso!");
+    }
+
+    static void ExcluirTarefa(Tarefa tarefa)
+    {
+        if (tarefas.Contains(tarefa))
+        {
+            tarefas.Remove(tarefa);
+            Console.WriteLine("Tarefa excluidado com sucesso!");
+        }
+        else
+        {
+            Console.WriteLine("A tarefa não foi encontrada.");
+        }
+
+    }
+}
